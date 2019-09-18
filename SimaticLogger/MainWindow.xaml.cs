@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace SimaticLogger.views
+namespace SimaticLogger
 {
     /// <summary>
-    /// Interaction logic for mainWindow.xaml
+    /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class mainWindow : UserControl
+    public partial class MainWindow : Window
     {
-        public mainWindow()
+        public MainWindow()
         {
             InitializeComponent();
         }
