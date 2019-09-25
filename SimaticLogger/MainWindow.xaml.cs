@@ -20,12 +20,16 @@ namespace SimaticLogger
     /// </summary>
     public partial class MainWindow : Window
     {
-        private readonly MainVM mainVM;
         public MainWindow()
         {            
             InitializeComponent();
-            mainVM = new MainVM();
-            DataContext = mainVM;                      
+            Loaded += MainWindow_Loaded;
+        }
+
+        private void MainWindow_Loaded(object sender, RoutedEventArgs e)
+        {
+            var mainVM = new MainVM();
+            DataContext = mainVM;
         }
     }
 }

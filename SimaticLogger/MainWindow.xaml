@@ -6,21 +6,33 @@
         xmlns:local="clr-namespace:SimaticLogger"
         mc:Ignorable="d"
         Title="MainWindow" Height="537.97" Width="1043.609">
-    
+    <Window.Resources>
+        <DataTemplate x:Key="messagesTemplate">
+            <Grid Margin="0.5">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Margin="5" FontSize="15" Text="{ Binding Text }" Grid.Column="1"/>
+                <TextBlock Margin="5" FontSize="15" Text="{ Binding Date}" Grid.Column="0"/>
+            </Grid>
+        </DataTemplate>
+    </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="100"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <ListBox Grid.Row="1" Name="messageList">
-        </ListBox>
+        <!--Btn panel-->    
         <Grid Grid.Row="0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <Button Grid.Column="0" Content="{Binding BtnContext, UpdateSourceTrigger=PropertyChanged}"></Button>
-            <Button Grid.Column="1">Hi Hi</Button>
+            <Button Grid.Column="0">Left btn</Button>
+            <Button Grid.Column="1">Right btn</Button>
         </Grid>
+        <!--List of messages-->
+        <ListBox Grid.Row="1" Name="messages" ItemTemplate="{StaticResource messagesTemplate}" ItemsSource="{Binding Messages, UpdateSourceTrigger=PropertyChanged}"/>
     </Grid>
 </Window>
