@@ -86,7 +86,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Model\MessageContainer.cs" />
-    <Compile Include="ViewModel\MainVM.cs" />
+    <Compile Include="View\MainVM.cs" />
     <Compile Include="View\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
