@@ -71,6 +71,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Model\MessageReceiver.cs" />
     <Compile Include="View\MessageList.xaml.cs">
       <DependentUpon>MessageList.xaml</DependentUpon>
     </Compile>
@@ -85,7 +86,6 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Model\MessageContainer.cs" />
     <Compile Include="View\MainVM.cs" />
     <Compile Include="View\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>

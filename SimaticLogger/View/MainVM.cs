@@ -7,9 +7,9 @@ namespace SimaticLogger
 {
     public class MainVM : BindableBase
     {
-        public List<Message> Messages { get; set; }
         public MainVM()
         {            
+
         }       
     }
 }
