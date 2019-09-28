@@ -12,11 +12,12 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="100"/>
+            <RowDefinition Height="100"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
         <!--Btn panel-->
-        <local:TopPanel/>
+        <local:TopPanel Grid.Row="1"/>
         <!--List of messages-->
-        <local:MessageList Grid.Row="1"/>
+        <local:MessageList Grid.Row="2"/>
     </Grid>
 </Window>

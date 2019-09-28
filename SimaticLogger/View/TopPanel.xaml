@@ -12,6 +12,6 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <Button Grid.Column="0" Content="Insert New" Command="{Binding InsertNew}"/>
-        <Button Grid.Column="1" Content="Delete top" Command="{Binding DeleteTop}"/>
+        <Button Grid.Column="1" Content="{Binding BtnContent, UpdateSourceTrigger=PropertyChanged}" Command="{Binding DeleteTop}"/>
     </Grid>
 </UserControl>
