@@ -11,7 +11,7 @@
             <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <Button Grid.Column="0">Left btn</Button>
-        <Button Grid.Column="1">Right btn</Button>
+        <Button Grid.Column="0" Content="Insert New" Command="{Binding InsertNew}"/>
+        <Button Grid.Column="1" Content="Delete top" Command="{Binding DeleteTop}"/>
     </Grid>
 </UserControl>

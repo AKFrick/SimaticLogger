@@ -7,18 +7,20 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <UserControl.Resources>
-        <DataTemplate x:Key="messagesTemplate">
-            <Grid Margin="0.5">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                </Grid.ColumnDefinitions>
-                <TextBlock Margin="5" FontSize="15" Text="{ Binding Text }" Grid.Column="1"/>
-                <TextBlock Margin="5" FontSize="15" Text="{ Binding Date }" Grid.Column="0"/>
-            </Grid>
-        </DataTemplate>
+        <DataTemplate DataType="{x:Type local:Message}">
+            <Border Margin="5" BorderThickness="1" BorderBrush="SteelBlue" CornerRadius="4">
+                <Grid Margin="0.5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Margin="5" FontSize="15" Text="{ Binding Text }" Grid.Column="1"/>
+                    <TextBlock Margin="5" FontSize="15" Text="{ Binding Date }" Grid.Column="0"/>
+                </Grid>
+            </Border>
+        </DataTemplate>            
     </UserControl.Resources>
     <Grid>
-        <ListBox Grid.Row="1" Name="messages" ItemTemplate="{DynamicResource messagesTemplate}" ItemsSource="{Binding Messages}"/>
+        <ListBox Grid.Row="1" Name="messages" ItemsSource="{Binding Messages}" />
     </Grid>
 </UserControl>

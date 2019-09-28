@@ -11,9 +11,10 @@ namespace SimaticLogger
     {
         public string Text { get; set; }
         public string Date { get; set; }
-        public Message()
+        public Message(string text, string date)
         {
-
+            Text = text;
+            Date = date;
         }
     }
 }
