@@ -5,6 +5,8 @@ using Prism.Mvvm;
 using System.Linq;
 using System.Collections.Specialized;
 using Prism.Commands;
+using System.Windows;
+using System;
 
 namespace SimaticLogger
 {
@@ -15,21 +17,20 @@ namespace SimaticLogger
             Messages = new ObservableCollection<Message>(messageCollector.Messages);
             ((INotifyCollectionChanged)messageCollector.Messages).CollectionChanged += (s, a) =>
                {
-                   if (a.NewItems?.Count != 0) Messages.Add(a.NewItems[0] as Message);
-                   if (a.OldItems?.Count == 1) Messages.Remove(a.OldItems[0] as Message);
+                   if (a.NewItems?.Count != 0)
+                        Application.Current.Dispatcher.BeginInvoke(new Action(() => 
+                            this.Messages.Add(a.NewItems[0] as Message)));                
+                   if (a.OldItems?.Count == 1)
+                        Application.Current.Dispatcher.BeginInvoke(new Action(() =>
+                            this.Messages.Remove(a.OldItems[0] as Message)));
                };
-            InsertNew = new DelegateCommand(() =>
-                {
-                    messageCollector.Collect();
-                    BtnContent = "Btn 2";
-                    RaisePropertyChanged(nameof(BtnContent));
-                });
-            DeleteTop = new DelegateCommand(() => Messages.Remove(Messages.First()));                                        
+            ConnectPlc = new DelegateCommand(() => messageCollector.StartGathering());
+            DisconnectPlc = new DelegateCommand(() => messageCollector.StopGathering());                                        
         }
         private MessageCollector messageCollector = new MessageCollector();
         public ObservableCollection<Message> Messages { get; }
-        public DelegateCommand InsertNew { get; }
-        public DelegateCommand DeleteTop { get; }
+        public DelegateCommand ConnectPlc { get; }
+        public DelegateCommand DisconnectPlc { get; }
         public string BtnContent { get; set; } = "Btn 1";
     }
 }

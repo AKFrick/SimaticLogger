@@ -11,7 +11,7 @@
             <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <Button Grid.Column="0" Content="Insert New" Command="{Binding InsertNew}"/>
-        <Button Grid.Column="1" Content="{Binding BtnContent, UpdateSourceTrigger=PropertyChanged}" Command="{Binding DeleteTop}"/>
+        <Button Grid.Column="0" Content="Connect" Command="{Binding ConnectPlc}"/>
+        <Button Grid.Column="1" Content="Disconnect" Command="{Binding DisconnectPlc}"/>
     </Grid>
 </UserControl>

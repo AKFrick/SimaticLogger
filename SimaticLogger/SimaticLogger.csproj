@@ -71,7 +71,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Model\IpUtility.cs" />
     <Compile Include="Model\MessageCollector.cs" />
     <Compile Include="Model\SimaticClient.cs" />
     <Compile Include="View\MessageList.xaml.cs">
