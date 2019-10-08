@@ -19,10 +19,10 @@ namespace SimaticLogger
                {
                    if (a.NewItems?.Count != 0)
                         Application.Current.Dispatcher.BeginInvoke(new Action(() => 
-                            this.Messages.Add(a.NewItems[0] as Message)));                
+                            Messages.Add(a.NewItems[0] as Message)));                
                    if (a.OldItems?.Count == 1)
                         Application.Current.Dispatcher.BeginInvoke(new Action(() =>
-                            this.Messages.Remove(a.OldItems[0] as Message)));
+                            Messages.Remove(a.OldItems[0] as Message)));
                };
             ConnectPlc = new DelegateCommand(() => messageCollector.StartGathering());
             DisconnectPlc = new DelegateCommand(() => messageCollector.StopGathering());                                        
