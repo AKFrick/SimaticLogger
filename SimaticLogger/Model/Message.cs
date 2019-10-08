@@ -7,6 +7,14 @@ using System.Threading.Tasks;
 
 namespace SimaticLogger
 {
+    public class MessageArgs : EventArgs
+    {
+        public MessageArgs(string messageText)
+        {
+            MessageText = messageText;
+        }
+        public string MessageText { get; private set; }
+    }
     public class Message
     {
         public string Text { get; set; }

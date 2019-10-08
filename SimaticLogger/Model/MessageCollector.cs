@@ -14,7 +14,7 @@ namespace SimaticLogger
         {            
             Messages = new ReadOnlyObservableCollection<Message>(messages);
             client = new SimaticClient();
-            client.NewMessage += Client_NewMessage;            
+            client.NewMessageCame += Client_NewMessage;            
         }        
         private void Client_NewMessage(object sender, MessageArgs e)
         {

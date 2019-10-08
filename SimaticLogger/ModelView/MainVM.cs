@@ -31,6 +31,5 @@ namespace SimaticLogger
         public ObservableCollection<Message> Messages { get; }
         public DelegateCommand ConnectPlc { get; }
         public DelegateCommand DisconnectPlc { get; }
-        public string BtnContent { get; set; } = "Btn 1";
     }
 }

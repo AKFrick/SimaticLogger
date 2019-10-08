@@ -6,19 +6,8 @@ using System.Text;
 
 namespace SimaticLogger
 {
-    public class MessageArgs : EventArgs
-    {
-        public MessageArgs(string messageText)
-        {
-            MessageText = messageText;         
-        }
-        public string MessageText { get; private set; }
-    }
     public class SimaticClient
     {
-        public SimaticClient()
-        {            
-        }
         Thread thread;
         private TcpClient client;
         private NetworkStream networkStream;
@@ -34,7 +23,7 @@ namespace SimaticLogger
                     while (true)
                     {
                         int bytes = networkStream.Read(data, 0, data.Length);
-                        RaiseNewMessage(System.Text.Encoding.ASCII.GetString(data, 2, data[2]));
+                        NewMessageCame(this, new MessageArgs(Encoding.ASCII.GetString(data, 2, data[2])));
                         Thread.Sleep(1000);
                     }
                 });
@@ -52,11 +41,7 @@ namespace SimaticLogger
             }
             
         }
-        public event EventHandler<MessageArgs> NewMessage;
-        private void RaiseNewMessage(string message)
-        {
-            NewMessage?.Invoke(this, new MessageArgs(message));
-        }
+        public event EventHandler<MessageArgs> NewMessageCame;
     }
 
 }
