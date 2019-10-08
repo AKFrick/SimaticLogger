@@ -32,4 +32,5 @@ namespace SimaticLogger
         public DelegateCommand ConnectPlc { get; }
         public DelegateCommand DisconnectPlc { get; }
     }
+    public class StatusBarVM: BindableBase { }
 }

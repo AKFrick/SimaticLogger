@@ -11,13 +11,15 @@
     </Window.DataContext>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="100"/>
-            <RowDefinition Height="100"/>
+            <RowDefinition Height="50"/>
             <RowDefinition/>
+            <RowDefinition Height="20"/>
         </Grid.RowDefinitions>
         <!--Btn panel-->
-        <local:TopPanel Grid.Row="1"/>
+        <local:TopPanel Grid.Row="0"/>
         <!--List of messages-->
-        <local:MessageList Grid.Row="2"/>
+        <local:MessageList Grid.Row="1"/>
+        <!--Status bar-->
+        <local:StatusBar Grid.Row ="2"/>
     </Grid>
 </Window>

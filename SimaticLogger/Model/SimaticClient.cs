@@ -8,6 +8,7 @@ namespace SimaticLogger
 {
     public class SimaticClient
     {
+        public event EventHandler<MessageArgs> NewMessageCame;
         Thread thread;
         private TcpClient client;
         private NetworkStream networkStream;
@@ -41,7 +42,6 @@ namespace SimaticLogger
             }
             
         }
-        public event EventHandler<MessageArgs> NewMessageCame;
     }
 
 }
