@@ -8,22 +8,29 @@ using Prism.Mvvm;
 
 namespace SimaticLogger
 {
-    class MessageCollector : BindableBase
+    public class MessageCollector : BindableBase
     {
         public MessageCollector()
-        {            
+        {
             Messages = new ReadOnlyObservableCollection<Message>(messages);
             client = new SimaticClient();
-            client.NewMessageCame += Client_NewMessage;            
-        }        
-        private void Client_NewMessage(object sender, MessageArgs e)
-        {
-            messages.Add(new Message(e.MessageText, ""));            
+            client.NewMessageCame += Client_NewMessageCame;
+            client.NewConnStatus += Client_NewConnStatus;
         }
         private SimaticClient client;
         private readonly ObservableCollection<Message> messages = new ObservableCollection<Message>();
-        public ReadOnlyObservableCollection<Message> Messages { get; }               
-        public void StartGathering() => client.Connect();       
-        internal void StopGathering() => client.Disconnect();        
+        public ReadOnlyObservableCollection<Message> Messages { get; }
+        public string ConnectStatus { get; set; }
+        public void StartGathering() => client.Connect();
+        public void StopGathering() => client.Disconnect();
+        private void Client_NewMessageCame(object sender, MessageArgs e)
+        {
+            messages.Add(new Message(e.MessageText, ""));
+        }
+        private void Client_NewConnStatus(object sender, ConnStatusArgs e)
+        {
+            ConnectStatus = e.ConnStatus;
+            RaisePropertyChanged(nameof(ConnectStatus));
+        }
     }
-}
+ }

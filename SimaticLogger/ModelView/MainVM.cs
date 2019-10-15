@@ -14,6 +14,9 @@ namespace SimaticLogger
     {
         public MainVM()
         {
+            messageCollector = new MessageCollector();
+            statusBarVM = new StatusBarVM(messageCollector);
+
             Messages = new ObservableCollection<Message>(messageCollector.Messages);
             ((INotifyCollectionChanged)messageCollector.Messages).CollectionChanged += (s, a) =>
                {
@@ -24,13 +27,26 @@ namespace SimaticLogger
                         Application.Current.Dispatcher.BeginInvoke(new Action(() =>
                             Messages.Remove(a.OldItems[0] as Message)));
                };
+
             ConnectPlc = new DelegateCommand(() => messageCollector.StartGathering());
             DisconnectPlc = new DelegateCommand(() => messageCollector.StopGathering());                                        
+
         }
-        private MessageCollector messageCollector = new MessageCollector();
+        private MessageCollector messageCollector;
+        public StatusBarVM statusBarVM { get; }
         public ObservableCollection<Message> Messages { get; }
         public DelegateCommand ConnectPlc { get; }
         public DelegateCommand DisconnectPlc { get; }
     }
-    public class StatusBarVM: BindableBase { }
+    public class StatusBarVM: BindableBase
+    {
+        public StatusBarVM(MessageCollector messageCollector)
+        {
+            collector = messageCollector;
+            collector.PropertyChanged += (s, a) => { RaisePropertyChanged(nameof(ConnMsg)); };
+            
+        }
+        private MessageCollector collector;
+        public string ConnMsg => collector.ConnectStatus;
+    }
 }

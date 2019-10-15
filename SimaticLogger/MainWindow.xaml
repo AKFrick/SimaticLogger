@@ -13,13 +13,13 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
             <RowDefinition/>
-            <RowDefinition Height="20"/>
+            <RowDefinition Height="25"/>
         </Grid.RowDefinitions>
         <!--Btn panel-->
         <local:TopPanel Grid.Row="0"/>
         <!--List of messages-->
         <local:MessageList Grid.Row="1"/>
         <!--Status bar-->
-        <local:StatusBar Grid.Row ="2"/>
+        <local:StatusBar Grid.Row ="2" DataContext="{Binding statusBarVM}"/>
     </Grid>
 </Window>
