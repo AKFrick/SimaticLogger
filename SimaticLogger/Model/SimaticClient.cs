@@ -6,25 +6,17 @@ using System.Text;
 
 namespace SimaticLogger
 {
-    public class ConnStatusArgs : EventArgs
-    {
-        public ConnStatusArgs(string text)
-        {
-            ConnStatus = text;
-        }
-        public string ConnStatus { get; set; }
-    }
     public class SimaticClient
     {
-        public event EventHandler<MessageArgs> NewMessageCame;
-        public event EventHandler<ConnStatusArgs> NewConnStatus;
+        public event EventHandler<MessageArgs> NewMessageCame;        
+        public event Action<string> NewConnStatus;
         Thread thread;
         private TcpClient client;
         private NetworkStream networkStream;
         private byte[] data = new byte[256];
         public void Connect()
         {
-            NewConnStatus(this, new ConnStatusArgs("Connecting..."));
+            NewConnStatus("Connecting...");
             return;
             if (thread == null)
             {

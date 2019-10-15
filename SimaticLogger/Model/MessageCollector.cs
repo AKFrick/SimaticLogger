@@ -15,7 +15,10 @@ namespace SimaticLogger
             Messages = new ReadOnlyObservableCollection<Message>(messages);
             client = new SimaticClient();
             client.NewMessageCame += Client_NewMessageCame;
-            client.NewConnStatus += Client_NewConnStatus;
+            client.NewConnStatus += (text) => {
+                ConnectStatus = text;
+                RaisePropertyChanged(nameof(ConnectStatus));
+            };
         }
         private SimaticClient client;
         private readonly ObservableCollection<Message> messages = new ObservableCollection<Message>();
@@ -26,11 +29,6 @@ namespace SimaticLogger
         private void Client_NewMessageCame(object sender, MessageArgs e)
         {
             messages.Add(new Message(e.MessageText, ""));
-        }
-        private void Client_NewConnStatus(object sender, ConnStatusArgs e)
-        {
-            ConnectStatus = e.ConnStatus;
-            RaisePropertyChanged(nameof(ConnectStatus));
-        }
+        }        
     }
  }
