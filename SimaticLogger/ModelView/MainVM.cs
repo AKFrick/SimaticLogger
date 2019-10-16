@@ -42,8 +42,7 @@ namespace SimaticLogger
         public StatusBarVM(MessageCollector messageCollector)
         {
             collector = messageCollector;
-            collector.PropertyChanged += (s, a) => { RaisePropertyChanged(nameof(ConnMsg)); };
-            
+            collector.PropertyChanged += (s, a) => RaisePropertyChanged(nameof(ConnMsg));            
         }
         private MessageCollector collector;
         public string ConnMsg => collector.ConnectStatus;

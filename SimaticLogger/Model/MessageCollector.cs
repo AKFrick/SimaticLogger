@@ -41,9 +41,6 @@ namespace SimaticLogger
         /// disconnect from PLC
         /// </summary>
         public void StopGathering() => client.Disconnect();
-        private void Client_NewMessageCame(object sender, MessageArgs e)
-        {
-            messages.Add(new Message(e.MessageText, ""));
-        }        
+        private void Client_NewMessageCame(object sender, MessageArgs e) => messages.Add(new Message(e.MessageText, ""));
     }
  }
