@@ -30,7 +30,6 @@ namespace SimaticLogger
 
             ConnectPlc = new DelegateCommand(() => messageCollector.StartGathering());
             DisconnectPlc = new DelegateCommand(() => messageCollector.StopGathering());                                        
-
         }
         private MessageCollector messageCollector;
         public StatusBarVM statusBarVM { get; }

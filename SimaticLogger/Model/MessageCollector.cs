@@ -17,7 +17,7 @@ namespace SimaticLogger
             client.NewMessageCame += Client_NewMessageCame;
             client.NewConnStatus += (text) => {
                 ConnectStatus = text;
-                RaisePropertyChanged(nameof(ConnectStatus));
+                RaisePropertyChanged();
             };
         }
         private SimaticClient client;
