@@ -7,14 +7,6 @@ using System.Threading.Tasks;
 
 namespace SimaticLogger
 {
-    public class MessageArgs : EventArgs
-    {
-        public MessageArgs(string messageText)
-        {
-            MessageText = messageText;
-        }
-        public string MessageText { get; private set; }
-    }
     /// <summary>
     /// message, received from PLC. Contains <see cref="Text"/> and <see cref="Date"/>
     /// </summary>
@@ -37,6 +29,10 @@ namespace SimaticLogger
         {
             Text = text;
             Date = date;
+        }
+        public Message(string text)
+        {
+            Text = text;
         }
     }
 }

@@ -14,7 +14,7 @@ namespace SimaticLogger
         /// <summary>
         /// occurs when one new message received from PLC
         /// </summary>
-        public event EventHandler<MessageArgs> NewMessageCame;
+        public event Action<Message> NewMessage;
         /// <summary>
         /// occurs when status of the connection to PLC changed
         /// </summary>
@@ -40,7 +40,7 @@ namespace SimaticLogger
                            while (true)
                            {
                                int bytes = networkStream.Read(data, 0, data.Length);
-                               NewMessageCame(this, new MessageArgs(Encoding.ASCII.GetString(data, 2, data[2])));
+                               NewMessage(new Message(Encoding.ASCII.GetString(data, 2, data[2])));
                                Thread.Sleep(1000);
                            }
                        }

@@ -17,7 +17,7 @@ namespace SimaticLogger
         {
             Messages = new ReadOnlyObservableCollection<Message>(messages);
             client = new SimaticClient();
-            client.NewMessageCame += Client_NewMessageCame;
+            client.NewMessage += (msg) => messages.Add(msg);
             client.NewConnStatus += (text) => {
                 ConnectStatus = text;
                 RaisePropertyChanged();
@@ -40,7 +40,6 @@ namespace SimaticLogger
         /// <summary>
         /// disconnect from PLC
         /// </summary>
-        public void StopGathering() => client.Disconnect();
-        private void Client_NewMessageCame(object sender, MessageArgs e) => messages.Add(new Message(e.MessageText, ""));
+        public void StopGathering() => client.Disconnect();       
     }
  }
