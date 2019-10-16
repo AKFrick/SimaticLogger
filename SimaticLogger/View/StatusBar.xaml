@@ -8,7 +8,7 @@
              d:DesignHeight="25" d:DesignWidth="300">
     <Grid Background="Azure">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
+            <ColumnDefinition Width="90"/>
             <ColumnDefinition/>
             <ColumnDefinition Width="50"/>
             <ColumnDefinition Width="25"/>
@@ -18,6 +18,7 @@
                FontStyle="Italic"                
                HorizontalAlignment="Left" 
                Grid.Column="0"/>
+        <!-- Connection Status -->
         <Label Content="{Binding ConnMsg}"
                Grid.Column="1"/>
         <Label Content="Status:" 

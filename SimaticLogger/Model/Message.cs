@@ -14,7 +14,7 @@ namespace SimaticLogger
             MessageText = messageText;
         }
         public string MessageText { get; private set; }
-    }
+    }    
     public class Message
     {
         public string Text { get; set; }
