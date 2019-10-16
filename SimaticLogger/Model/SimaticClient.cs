@@ -6,6 +6,9 @@ using System.Text;
 
 namespace SimaticLogger
 {
+    /// <summary>
+    /// Connect to PLC to get messages repeatly from buffer
+    /// </summary>
     public class SimaticClient
     {
         public event EventHandler<MessageArgs> NewMessageCame;        
@@ -14,10 +17,11 @@ namespace SimaticLogger
         private TcpClient client;
         private NetworkStream networkStream;
         private byte[] data = new byte[256];
+        /// <summary>
+        /// connect to PLC and begin getting message
+        /// </summary>
         public void Connect()
-        {
-            NewConnStatus("Connecting...");
-            return;
+        {            
             if (thread == null)
             {
                 client = new TcpClient("192.168.20.2", 2000);
@@ -34,6 +38,9 @@ namespace SimaticLogger
                 thread.Start();
             }
         }
+        /// <summary>
+        /// disconnect from PLC and finish getting messages
+        /// </summary>
         public void Disconnect()
         {
             if (thread.IsAlive)
