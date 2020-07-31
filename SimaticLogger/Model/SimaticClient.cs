@@ -47,6 +47,7 @@ namespace SimaticLogger
                        catch (SocketException e) { NewConnStatus(e.Message); }
                    }
                 );
+                thread.IsBackground = true;
                 thread.Start();
             }
         }

@@ -30,6 +30,10 @@ namespace SimaticLogger
             Text = text;
             Date = date;
         }
+        /// <summary>
+        /// New Message
+        /// </summary>
+        /// <param name="text">text of message</param>
         public Message(string text)
         {
             Text = text;
